@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+</head>
+<body>
+    <!-- 글쓰기 버튼-->
+    <a href="{% url 'new' %}"> 추가 </a>
+    <!-- 블로그 글을 띄우는 공간-->
+    {% for blog in object_list %} <!-- object_list 작성한 모든 블로그 글들의 객체들이 담김-->
+        <h2>{{blog.title}}</h2>
+        <h3>{{blog.created_at}}</h3>
+        <p>{{blog.body}}</p>
+        <a href="{% url 'detail' blog.id %}"> 자세히보기 </a>
+        <a href="{% url 'change' blog.id %}"> 수정 </a>
+        <a href="{% url 'del' blog.id %}"> 삭제 </a>
+
+        <hr>
+    {% endfor %}
+    
+</body>
+</html>

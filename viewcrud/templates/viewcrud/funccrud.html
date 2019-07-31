@@ -1,0 +1,44 @@
+{% extends 'base.html'%} <!--extends 우선순위가 가장 높음 -->
+
+{% block contents %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-20">아무 말 게시판에 오신걸 환영합니다.</h1>
+          <p>아무게에선 아무 말이라도 좋습니다.</p>
+          <p><a class="btn btn-primary btn-lg" href="{% url 'newblog' %}" role="button">글쓰기 &raquo;</a></p>
+        </div>
+      </div>
+    
+    <div class="container">
+
+    
+    <main role="main">
+
+
+              <!-- Example row of columns -->
+            
+              <div class="row">
+                {% for blog in blogs %}
+                <div class="col-md-4">
+                  <h2>{{blog.title}}</h2>
+                  <h3>{{blog.pub_date}}</h3>
+                  <p>{{blog.body}}</p>
+                  <p><a class="btn btn-secondary" href="{% url 'update' blog.id %}" role="button">수정 &raquo;</a>
+                  <a class="btn btn-secondary" href="{% url 'delete' blog.id %}" role="button">삭제 &raquo;</a></p>
+                </div>
+                {% endfor %}
+              </div>
+          
+              <hr>
+            
+    </div> <!-- /container -->
+    </main>
+          
+    <footer class="container">
+        <p>&copy; 2019, DongHyun Kim</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script></body>
+</body>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html'%} <!--extends 우선순위가 가장 높음 -->
+
+{% block contents %}
+
+    <div class="container">
+    <br><br><br><br>
+    <form method='POST'>
+        {% csrf_token %}
+        <table class="table table-dark">
+            {{form.as_table}}
+        </table>
+        <button type="submit" class="btn btn-dark">Submit</button>
+        <!-- 제출하기를 누르면 post 방식으로 create함수로 다시 전달된다.-->
+        </div>
+    </form>
+    </div>
+
+
+
+
+</body>
+{% endblock %}
